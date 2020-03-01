@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebAR Car</title>
+    <meta name="GLTF View" content="Car">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+    <script>THREEx.ArToolkitContext.baseURL = 'https://rawgit.com/jeromeetienne/ar.js/master/three.js/'</script>
+    <script src="./js/index.js"></script>
+    <style>
+      .note {
+        position: absolute;
+                     top: 1%;
+                     left: 1%;
+                     color: black;
+                     text-shadow:
+                     -1px -1px 0 #BBB,
+                     1px -1px 0 #BBB,
+                     -1px 1px 0 #BBB,
+                     1px 1px 0 #BBB;
+      }
+      a-scene {
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="note" style="position: absolute;
+                     top: 1%;
+                     left: 1%;
+                     color: black;
+                     text-shadow:
+                     -1px -1px 0 #BBB,
+                     1px -1px 0 #BBB,
+                     -1px 1px 0 #BBB,
+                     1px 1px 0 #BBB;">
+      You'll need to have <a href="https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg">this image</a> printed or just displaying on your phone.
+    </div>
+    <a-scene device-orientation-permission-ui="enabled: false" artoolkit="sourceType: webcam;" embedded="embedded">
+        <a-marker preset="hiro">
+          <a-light color="white" position="0 20 0" distance="22" intensity="3"></a-light>
+            <a-light type="ambient" color="#ffffcc" intensity="3"></a-light>
+            <a-entity gltf-model="https://cdn.glitch.com/ddc23590-a9c1-4a13-8057-0d4f90febacb%2Fcar.glb?v=1583082923211" position="0 0 -1.5" scale="0.6 0.6 0.6"></a-entity>
+        </a-marker>
+      <a-camera-static/>
+    </a-scene>
+
+  </body>
+</html>
