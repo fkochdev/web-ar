@@ -38,10 +38,10 @@
                      1px -1px 0 #BBB,
                      -1px 1px 0 #BBB,
                      1px 1px 0 #BBB;">
-      You'll need to have <a href="https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg">this image</a> printed or just displaying on your phone.
+     Hello! Please scan the printed marker or <a href="https://cdn.glitch.com/f614c2c8-56a0-4dc2-9bc0-5ceb9e4aee4f%2Fpattern-fk_marker.png">this image</a> on desktop.
     </div>
     <a-scene device-orientation-permission-ui="enabled: false" artoolkit="sourceType: webcam;" embedded="embedded">
-        <a-marker preset="hiro">
+        <a-marker preset="custom" type="pattern" url="https://cdn.glitch.com/f614c2c8-56a0-4dc2-9bc0-5ceb9e4aee4f%2Fpattern-fk_marker.patt">
           <a-light color="white" position="0 20 0" distance="22" intensity="3"></a-light>
             <a-light type="ambient" color="#ffffcc" intensity="3"></a-light>
             <a-entity gltf-model="https://cdn.glitch.com/ddc23590-a9c1-4a13-8057-0d4f90febacb%2Fcar.glb?v=1583082923211" position="0 0 -1.5" scale="0.6 0.6 0.6"></a-entity>
