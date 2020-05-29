@@ -7,10 +7,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
     <script>THREEx.ArToolkitContext.baseURL = 'https://rawgit.com/jeromeetienne/ar.js/master/three.js/'</script>
-    <script src="./js/index.js"></script>
+    <!--script src="./js/index.js"></script-->
     <style>
       .note {
         position: absolute;
@@ -22,6 +23,7 @@
                      1px -1px 0 #BBB,
                      -1px 1px 0 #BBB,
                      1px 1px 0 #BBB;
+                      font-size: 12px;
       }
       a-scene {
         pointer-events: none;
@@ -29,23 +31,37 @@
     </style>
   </head>
   <body>
-    <div class="note" style="position: absolute;
-                     top: 1%;
-                     left: 1%;
-                     color: black;
-                     text-shadow:
-                     -1px -1px 0 #BBB,
-                     1px -1px 0 #BBB,
-                     -1px 1px 0 #BBB,
-                     1px 1px 0 #BBB;">
-     Hello! Please scan the printed marker or <a href="https://cdn.glitch.com/f614c2c8-56a0-4dc2-9bc0-5ceb9e4aee4f%2Fpattern-fk_marker.png">this image</a> on desktop.
+    <div class="note">
+      Bitte scannen Sie <a href="https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg">diese Marker</a> mit der Kamera ihres mobilen Gerätes. Die Marker können ausgedruckt oder auf einem Bildschirm angezeigt werden.
     </div>
-    <a-scene device-orientation-permission-ui="enabled: false" artoolkit="sourceType: webcam;" embedded="embedded">
-        <a-marker preset="custom" type="pattern" url="https://cdn.glitch.com/f614c2c8-56a0-4dc2-9bc0-5ceb9e4aee4f%2Fpattern-fk_marker.patt">
-          <a-light color="white" position="0 50 0" distance="52" intensity="4"></a-light>
-            <a-light type="ambient" color="#ffffcc" intensity="3"></a-light>
-            <a-entity gltf-model="https://cdn.glitch.com/ddc23590-a9c1-4a13-8057-0d4f90febacb%2Fcar.glb?v=1583082923211" position="0 0 -1.5" scale="0.6 0.6 0.6"></a-entity>
+    <a-scene renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true;" device-orientation-permission-ui="enabled: false" artoolkit="sourceType: webcam;" embedded="embedded" arjs="trackingMethod: best;">
+        <a-assets>
+            <video webkit-playsinline playsinline autoplay type="video/mp4" id="video" loop="true" src="models/fritz_video.mp4"></video>
+        </a-assets>
+            
+        <a-light type="ambient" color="#ffffcc" intensity="1"></a-light>
+      
+        <a-marker preset="custom" type="pattern" url="marker/marker-1.patt">
+                    <a-light color="white" position="0 50 0" distance="100" intensity="1"></a-light>
+            <a-entity gltf-model="models/car.glb" position="0 0 -1.5" scale="0.7 0.7 0.7"></a-entity>
         </a-marker>
+      
+        <a-marker preset="custom" type="pattern" url="marker/marker0.patt">
+            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.001 0.001 0.001"></a-entity>
+        </a-marker>
+      
+       <a-marker preset="custom" type="pattern" url="marker/marker1.patt">
+        <a-entity position="-0.64 0.1 -0.36">
+            <a-video src="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 180 0"></a-video>
+          </a-entity>
+        </a-marker>
+      
+      
+        <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt">
+          <a-light color="white" position="0 50 0" distance="100" intensity="1"></a-light>
+            <a-entity gltf-model="models/car.glb" position="0 0 -1.5" scale="0.7 0.7 0.7"></a-entity>
+        </a-marker>
+      
       <a-camera-static/>
     </a-scene>
 
