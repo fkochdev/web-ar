@@ -35,7 +35,13 @@
 
 
 
-    <a-scene renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;" device-orientation-permission-ui="enabled: false" artoolkit="sourceType: webcam;" embedded="embedded" arjs="trackingMethod: best;">
+    <a-scene 
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+
+    <!--renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;" device-orientation-permission-ui="enabled: false" artoolkit="sourceType: webcam;" embedded="embedded" arjs="trackingMethod: best;"-->
         <a-assets>
         </a-assets>
             
@@ -58,8 +64,8 @@
 
         </a-marker>
 
-      
-      <a-camera-static/>
+      <a-entity camera></a-entity>
+      <!--a-camera-static/-->
     </a-scene>
 
   </body>
