@@ -62,9 +62,7 @@
          }
          }
          });
-    </script>
 
-    <script>
       document.addEventListener("DOMContentLoaded", function(event) {
         var scene = document.querySelector("a-scene");
         var vid = document.getElementById("video");
@@ -89,7 +87,6 @@
         
         function playVideo () {
           vid.play();
-          vid.pause();
         }
       })
     </script>
@@ -98,7 +95,15 @@
   <body>
 
  <div id="splash">
-      <div id="start-button">Please click here and\nallow camera access to start\nthe WebAR experience.\n\n\nBitte klicken Sie hier und\nerlauben Sie den Kamera-Zugriff\nzum Start der WebAR-Anwendung.</div>
+      <div id="start-button">
+      	<p>Please click here to</p> 
+      	<p>allow camera access to</p> 
+      	<p>start the WebAR experience.</p>
+      	<br>
+      	<p>Bitte klicken Sie hier und</p>
+      	<p>erlauben Sie den Kamera-Zugriff</p>
+      	<p>zum Start der WebAR-Anwendung.</p>
+      </div>
     </div>
 
     <a-scene 
@@ -110,7 +115,7 @@
     light="defaultLightsEnabled: false;"
     >
     	<a-assets>
-        	<video webkit-playsinline playsinline crossorigin autoplay type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+        	<video webkit-playsinline playsinline crossorigin type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
         </a-assets>
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
