@@ -29,24 +29,23 @@
       }
     </style>
     <script>
-    	AFRAME.registerComponent('vidhandler', {
-		  init: function () {
-		    this.toggle = false;
-		    this.vid = document.querySelector("#video")
-		    this.vid.pause()
-		},
-		 tick:function(){
-		   if(this.el.object3D.visible == true){
-		     if(!this.toggle){
-		       this.toggle = true;
-		       this.vid.play();
-		    }
-		  }else{
-		    this.toggle = false;
-		    this.vid.pause();
-		  }
-		 }
-		});
+		AFRAME.registerComponent('vidhandler', {
+         init: function () {
+          this.toggle = false;
+          document.querySelector("#video").pause(); //reference to the video
+         },
+         tick:function(){  
+         if(document.querySelector("a-marker").object3D.visible == true){
+           if(!this.toggle){
+             this.toggle = true;
+             document.querySelector("#video").play();
+           }
+         }else{
+           this.toggle = false;
+           document.querySelector("#video").pause();
+         }
+         }
+         });
     </script>
 
   </head>
@@ -69,12 +68,13 @@
        <a-entity light="type: directional; color: #ffffe0; target: lightTarget; position: 15 15 15; distance: 200; intensity: 1;"></a-entity>
 
        <a-marker preset="custom" type="pattern" url="marker/marker0.patt">  
-       <a-plane position="0 0 0" width="1.28" height="0.72" rotation="90 0 0" material="transparent: true; opacity: 1; src:#video;" vidhandler></a-plane>   
        <a-video src="#video" width="1.28" height="0.72" position="0 0 -1" rotation="90 0 0" vidhandler></a-video>
-            <a-entity gltf-model="models/tiger.glb" position="-1 0 0" scale="0.4 0.4 0.4"></a-entity>
+            <a-entity gltf-model="models/tiger.glb" position="-1 0 0" scale="0.04 0.04 0.04"></a-entity>
+                        <a-entity gltf-model="models/tiger.glb" position="-1 0 -1" scale="1 1 1"></a-entity>
+
             <a-entity gltf-model="models/elephant.glb" position="1 0 0" scale="0.4 0.4 0.4"></a-entity>     
 
-	   </a-marker>
+	   </a-marker>	
 
       
        <a-marker preset="custom" type="pattern" url="marker/marker1.patt">
