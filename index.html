@@ -24,7 +24,7 @@
         align-items: center;
         justify-content: center;
         
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 1);
         color: white;
         cursor: pointer;
         z-index: 999;
@@ -42,11 +42,11 @@
         align-items: center;
         justify-content: center;
         
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 1);
         color: white;
         cursor: pointer;
         z-index: -2;
-        font-size: 1vw;
+        font-size: 2vw;
       }
     </style>
     <script>
@@ -114,16 +114,17 @@
 		<a-entity light="type: ambient; color: #ffffe0; intensity: 1;"></a-entity>
        <a-entity light="type: directional; color: #ffffe0; target: lightTarget; position: 15 15 15; distance: 200; intensity: 2;"></a-entity>
 
-       <a-marker preset="custom" type="pattern" url="marker/marker0.patt">  
+       <!--a-marker preset="custom" type="pattern" url="marker/marker0.patt">  
 	       <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
-	   </a-marker>	
+	   </a-marker-->	
 
-	   <a-marker preset="custom" type="pattern" url="marker/marker_kola.patt">  
+	   <a-marker preset="custom" type="pattern" url="marker/marker_kolaborder.patt">  
 	       <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="90 180 0" vidhandler></a-video>
 	   </a-marker>	
       
        <a-marker preset="custom" type="pattern" url="marker/marker1.patt">
-            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.006 0.006 0.006"></a-entity>
+            <!--a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.006 0.006 0.006"></a-entity-->
+	       <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
 
         </a-marker>
       
