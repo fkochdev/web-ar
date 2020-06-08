@@ -31,13 +31,24 @@
       }
     </style>
     <script>
-    	var vid = document.querySelector('#video');
-
-    	 AFRAME.registerComponent("foo", {
-		    init: function() {
-		  	  this.el.addEventListener("click", (e)=>{vid.play()})
+    	AFRAME.registerComponent('vidhandler', {
+		  init: function () {
+		    this.toggle = false;
+		    this.vid = document.querySelector("#video")
+		    this.vid.pause()
+		},
+		 tick:function(){
+		   if(this.el.object3D.visible == true){
+		     if(!this.toggle){
+		       this.toggle = true;
+		       this.vid.play();
 		    }
-	    })
+		  }else{
+		    this.toggle = false;
+		    this.vid.pause();
+		  }
+		 }
+		});
     </script>
 
   </head>
@@ -48,12 +59,11 @@
     device-orientation-permission-ui="enabled: false;"
     renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;"
     embedded
-    cursor="rayOrigin: mouse"
     arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
     light="defaultLightsEnabled: false;"
     >
     	<a-assets>
-        	<video webkit-playsinline playsinline type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+        	<video webkit-playsinline playsinline crossorigin type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
         </a-assets>
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
@@ -61,7 +71,7 @@
        <a-entity light="type: directional; color: white; target: lightTarget; position: 15 15 15; distance: 200; intensity: 0.3;"></a-entity>
 
        <a-marker preset="custom" type="pattern" url="marker/marker0.patt">     
-       <a-video src="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 0 0"></a-video>
+       <a-video src="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 0 0" vidhandler></a-video>
             <a-entity gltf-model="models/tiger.glb" position="-1 0 0" scale="0.4 0.4 0.4"></a-entity>
             <a-entity gltf-model="models/elephant.glb" position="1 0 0" scale="0.4 0.4 0.4"></a-entity>     
 
