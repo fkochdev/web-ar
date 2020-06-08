@@ -26,6 +26,9 @@
                      1px 1px 0 #BBB;
                       font-size: 12px;
       }
+      a-scene {
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
@@ -47,7 +50,7 @@
        <a-entity light="type: directional; color: white; target: lightTarget; position: 15 15 15; distance: 200; intensity: 0.3;"></a-entity>
 
        <a-marker preset="custom" type="pattern" url="marker/marker0.patt">     
-       <a-video src="#video" id="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 0 0"></a-video>
+       <a-video src="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 0 0"></a-video>
             <a-entity gltf-model="models/tiger.glb" position="-1 0 0" scale="0.4 0.4 0.4"></a-entity>
             <a-entity gltf-model="models/elephant.glb" position="1 0 0" scale="0.4 0.4 0.4"></a-entity>     
 
@@ -67,7 +70,7 @@
         </a-marker>
 
       <a-entity camera></a-entity>
-      <a-entity video-controls="src:#video"></a-entity>
+      <a-entity video-controls="src:#video;"></a-entity>
       <!--a-camera-static/-->
     </a-scene>
 
