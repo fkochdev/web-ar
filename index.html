@@ -12,25 +12,11 @@
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
     <style type="text/css">
-      .note {
-        position: absolute;
-                     top: 1%;
-                     left: 1%;
-                     color: black;
-                     text-shadow:
-                     -1px -1px 0 #BBB,
-                     1px -1px 0 #BBB,
-                     -1px 1px 0 #BBB,
-                     1px 1px 0 #BBB;
-                      font-size: 12px;
-      }
-      a-scene {
-        pointer-events: none;
-      }
+
       #splash {
         display: flex;
         position: fixed;
-        top: 0;
+        top: 70%;
         left: 0;
         right: 0;
         bottom: 0;
@@ -38,10 +24,11 @@
         align-items: center;
         justify-content: center;
         
-        background: rgba(0, 0, 0, 1);
+        background: rgba(0, 0, 0, 0.9);
         color: white;
         cursor: pointer;
         z-index: 999;
+        font-size: 10vw;
       }
     </style>
     <script>
@@ -84,7 +71,7 @@
       	<p align="center">Please allow camera access /</p>
       	<p align="center">Bitte Kamera-Zugriff erlauben</p>
       	<br>
-      	<p align="center">--- START ---</p>
+      	<p align="center">- START -</p>
 
       </div>
     </div>
