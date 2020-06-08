@@ -36,7 +36,7 @@
         bottom: 0;
 
         align-items: center;
-        justify-content: center;
+        justify-content: bottom;
         
         background: rgba(0, 0, 0, 1);
         color: white;
@@ -67,14 +67,14 @@
         var scene = document.querySelector("a-scene");
         var vid = document.getElementById("video");
 
-          run();
+          //run();
 
-/*        if (scene.hasLoaded) {
+        if (scene.hasLoaded) {
           run();
         } else {
           scene.addEventListener("loaded", run);
         }
-        */
+        
         function run () {
           //if(AFRAME.utils.device.isMobile()) {
             document.querySelector('#splash').style.display = 'flex';
