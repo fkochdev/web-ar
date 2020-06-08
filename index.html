@@ -96,13 +96,10 @@
 
  <div id="splash">
       <div id="start-button">
-      	<p>Please click here to</p> 
-      	<p>allow camera access to</p> 
-      	<p>start the WebAR experience.</p>
       	<br>
-      	<p>Bitte klicken Sie hier und</p>
-      	<p>erlauben Sie den Kamera-Zugriff</p>
-      	<p>zum Start der WebAR-Anwendung.</p>
+      	<p align="center">Please allow camera access to start.</p>
+		<br>
+      	<p align="center">Bitte erlauben Sie den Kamera-Zugriff</p>
       </div>
     </div>
 
@@ -115,7 +112,7 @@
     light="defaultLightsEnabled: false;"
     >
     	<a-assets>
-        	<video webkit-playsinline playsinline crossorigin type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+        	<video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
         </a-assets>
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
@@ -147,6 +144,12 @@
       <a-entity camera></a-entity>
       <!--a-camera-static/-->
     </a-scene>
+
+    <script>
+window.addEventListener('click', function () {
+  var v = document.querySelector('#video
+});
+</script>
 
   </body>
 </html>
