@@ -27,56 +27,26 @@
       a-scene {
         pointer-events: none;
       }
-      #splash {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        align-items: center;
-        justify-content: center;
-        
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        cursor: pointer;
-        z-index: 999;
     </style>
-      <script>
+    <script>
+// make video clickabel
       document.addEventListener("DOMContentLoaded", function(event) {
-        var scene = document.querySelector("a-scene");
-        var vid = document.getElementById("video");
-
-        if (scene.hasLoaded) {
-          run();
-        } else {
-          scene.addEventListener("loaded", run);
-        }
         
-        function run () {
-          if(AFRAME.utils.device.isMobile()) {
-            document.querySelector('#splash').style.display = 'flex';
-            document.querySelector('#splash').addEventListener('click', function () {
-              playVideo();
-              this.style.display = 'none';
-            })
-          } else {
-              playVideo();
-          }
-        }
+        var vid = document.getElementById("video");
+	    
+	    document.querySelector('#video').addEventListener('click', function () {
+    		playVideo();
+        })
         
         function playVideo () {
           vid.play();
         }
+
       })
+
     </script>
   </head>
   <body>
-
-<div id="splash">
-      <div id="start-button">Start</div>
-    </div>  
 
     <a-scene 
     vr-mode-ui="enabled: false;"
@@ -90,12 +60,10 @@
             <video webkit-playsinline playsinline autoplay type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
         </a-assets>
 
-        <a-entity light="type: ambient; target: #lightTarget; color: #ffffe0; intensity: 4;"></a-entity>
-        <a-entity light="type: directional; color: white; target: #lightTarget; position: 15 15 15; distance: 200; intensity: 2;"></a-entity>
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
 
        <a-marker preset="custom" type="pattern" url="marker/marker0.patt">     
-       <a-video src="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 0 0"></a-video>
+       <a-video src="#video" id="#video" width="1.28" height="0.72" position="0 0 0" rotation="90 0 0"></a-video>
             <a-entity gltf-model="models/tiger.glb" position="-1 0 0" scale="0.4 0.4 0.4"></a-entity>
             <a-entity gltf-model="models/elephant.glb" position="1 0 0" scale="0.4 0.4 0.4"></a-entity>     
 
@@ -108,12 +76,16 @@
         </a-marker>
       
         <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt">
-            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-2 0 -3.5" rotation="0 90 0" scale="0.4 0.4 0.4"></a-entity>
+	        <a-entity light="type: ambient; target: #lightTarget; color: #ffffe0; intensity: 4;">
+	   	        <a-entity light="type: directional; color: white; target: #lightTarget; position: 15 15 15; distance: 200; intensity: 2;">
+            		<a-entity gltf-model="models/car.glb" id="lightTarget" position="-2 0 -3.5" rotation="0 90 0" scale="0.4 0.4 0.4"></a-entity>	
+            	</a-entity>
+            </a-entity>
             <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.004 0.004 0.004"></a-entity>
 
         </a-marker>
 
-      <a-entity camera look-controls cursor="rayOrigin: mouse"></a-entity>
+      <a-entity camera></a-entity>
       <!--a-camera-static/-->
     </a-scene>
 
