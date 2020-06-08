@@ -30,6 +30,16 @@
         pointer-events: none;
       }
     </style>
+    <script>
+    	var vid = document.querySelector('#video');
+
+    	 AFRAME.registerComponent("foo", {
+		    init: function() {
+		  	  this.el.addEventListener("click", (e)=>{vid.play()})
+		    }
+	    })
+    </script>
+
   </head>
   <body>
 
@@ -38,11 +48,12 @@
     device-orientation-permission-ui="enabled: false;"
     renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;"
     embedded
+    cursor="rayOrigin: mouse"
     arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
     light="defaultLightsEnabled: false;"
     >
     	<a-assets>
-        	<video webkit-playsinline playsinline autoplay type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+        	<video webkit-playsinline playsinline type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
         </a-assets>
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
