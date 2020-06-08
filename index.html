@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>WebAR Marker</title>
-    <meta name="WebAR Marker Samples" content="WebAR Sample">
+    <meta name="WebAR Marker Samples" content="WebAR Sample\nLoading...">
     <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
     <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
@@ -27,6 +27,22 @@
       a-scene {
         pointer-events: none;
       }
+      #splash {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        align-items: center;
+        justify-content: center;
+        
+        background: rgba(0, 0, 0, 1);
+        color: white;
+        cursor: pointer;
+        z-index: 999;
+      }
     </style>
     <script>
 		AFRAME.registerComponent('vidhandler', {
@@ -48,8 +64,42 @@
          });
     </script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        var scene = document.querySelector("a-scene");
+        var vid = document.getElementById("video");
+
+        if (scene.hasLoaded) {
+          run();
+        } else {
+          scene.addEventListener("loaded", run);
+        }
+        
+        function run () {
+          if(AFRAME.utils.device.isMobile()) {
+            document.querySelector('#splash').style.display = 'flex';
+            document.querySelector('#splash').addEventListener('click', function () {
+              playVideo();
+              this.style.display = 'none';
+            })
+          } else {
+              playVideo();
+          }
+        }
+        
+        function playVideo () {
+          vid.play();
+          vid.pause();
+        }
+      })
+    </script>
+
   </head>
   <body>
+
+ <div id="splash">
+      <div id="start-button">Click to start\nthe WebAR experience.</div>
+    </div>
 
     <a-scene 
     vr-mode-ui="enabled: false;"
