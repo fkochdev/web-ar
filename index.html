@@ -147,6 +147,11 @@
 /* MARKER */
     	<a-assets>
         	<video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+		    <img id="location" src="images/location.jpg">
+  		</a-assets>
+
+  <!-- Using the asset management system. -->
+  <a-image src="#my-image"></a-image>
         </a-assets>
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
@@ -180,23 +185,33 @@
         /* GPS */
 
 		<a-text
-	        value="This content will always face you."
+	        value="China-\nRestaurant" 
 	        look-at="[gps-camera]"
 	        scale="50 50 50"
 	        gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;"
-      	>China-Restaurant</a-text>
-
+	        id="ChinaRestaurant"
+      	></a-text>
+      	  <a-image src="#location"
+      	  	look-at="[gps-camera]"
+	        scale="50 50 50"
+	        gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;">
+      	  </a-image>
       	<a-text
-	        value="This content will always face you."
+	        value="Café Bistro Nes"
 	        look-at="[gps-camera]"
 	        scale="50 50 50"
 	        gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;"
-      	>Café Bistro Nes</a-text>
+      	></a-text>
+      	  <a-image src="#location"
+      	  	look-at="[gps-camera]"
+	        scale="50 50 50"
+	        gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;">
+      	  </a-image>
 
       <a-camera > </a-camera>
 
       <a-camera gps-camera rotation-reader> </a-camera>      <!--a-camera-static/-->
-    </a-scene>
+
 
     <!--script>
 window.addEventListener('click', function () {
