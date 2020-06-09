@@ -34,7 +34,7 @@
         color: white;
         cursor: pointer;
         z-index: 999;
-        font-size: 2vw;
+        font-size: 3vw;
       }
 
       #camhint {
@@ -52,7 +52,7 @@
         color: white;
         cursor: pointer;
         z-index: -2;
-        font-size: 2vw;
+        font-size: 3vw;
       }
 
       #impressum {
@@ -70,7 +70,7 @@
         color: white;
         cursor: pointer;
         z-index: 999;
-        font-size: 1vw;
+        font-size: 2vw;
       }
     </style>
     <script>
@@ -117,13 +117,13 @@
 
  <div id="splash">
       <div id="start-button">
-      	<p align="center">[ Start WebAR ]</p>
+      	<p align="center">Start WebAR</p>
 
       </div>
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch <a href="mailto:fkoch.dev@gmail.com">(E-Mail)</a></p>
+      	<p align="center">(c) 2020, Florian Koch,  <a href="mailto:fkoch.dev@gmail.com" font-color="black">info(a)designed-dreams.de</a></p>
     </div>
 
     <a-scene 
@@ -142,7 +142,7 @@
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
 		<a-entity light="type: ambient; color: #ffffe0; intensity: 1;"></a-entity>
-       <a-entity light="type: directional; color: #ffffe0; target: lightTarget; position: 15 15 15; distance: 200; intensity: 2;"></a-entity>
+       <a-entity light="type: directional; color: #ffffe0; target: lightTarget; position: 1 1 -1; intensity: 0.7;"></a-entity>
 
        <!--a-marker preset="custom" type="pattern" url="marker/marker0.patt">  
 	       <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
