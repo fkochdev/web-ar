@@ -10,6 +10,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script>
+
+
 
 
     <style type="text/css">
@@ -141,6 +144,7 @@
     light="defaultLightsEnabled: false;"
     >
 
+/* MARKER */
     	<a-assets>
         	<video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
         </a-assets>
@@ -173,8 +177,25 @@
             </a-entity>
         </a-marker>
 
-      <a-entity camera></a-entity>
-      <!--a-camera-static/-->
+        /* GPS */
+
+		<a-text
+	        value="This content will always face you."
+	        look-at="[gps-camera]"
+	        scale="50 50 50"
+	        gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;"
+      	><p>China-Restaurant</p><p>Edith-Stein-Platz 4</p></a-text>
+
+      	<a-text
+	        value="This content will always face you."
+	        look-at="[gps-camera]"
+	        scale="50 50 50"
+	        gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;"
+      	>Café Bistro Nes</a-text>
+
+      <a-camera > </a-camera>
+
+      <a-camera gps-camera rotation-reader> </a-camera>      <!--a-camera-static/-->
     </a-scene>
 
     <!--script>
