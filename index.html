@@ -164,22 +164,22 @@
 	       <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
 	   </a-marker-->	
 
-	   <a-marker preset="custom" type="pattern" url="marker/marker_kolatest.patt">  
-	       <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler></a-video>
-	       <a-entity gltf-model="models/wineglass.glb" id="lightTarge1" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7"></a-entity>	
+	   <a-marker preset="custom" type="pattern" url="marker/marker_kolatest.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
+	       <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 10"></a-video>
+	       <a-entity gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
 
 	   </a-marker>	
       
        <a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
+            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
 	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>     
 
         </a-marker>
       
-        <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt">
-	        <a-entity animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000">
+        <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
 	            <a-entity gltf-model="models/car2.glb" id="lightTarget" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
             </a-entity>
         </a-marker>
