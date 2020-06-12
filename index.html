@@ -119,8 +119,8 @@
 
 <div id="camhint">
       <div id="start-button">
-      	<p align="center">Please allow camera & gps access.</p>
-      	<p align="center">Bitte Kamera- und GPS-Zugriff erlauben.</p>
+      	<p align="center">Please allow camera access.</p>
+      	<p align="center">Bitte Kamera-Zugriff erlauben.</p>
 
       </div>
     </div>
@@ -171,7 +171,7 @@
 	   </a-marker>	
       
        <a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
+            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -135 0">
 	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>     
@@ -180,14 +180,13 @@
       
         <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
 	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
-	            <a-entity gltf-model="models/car2.glb" id="lightTarget" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
+	            <a-entity gltf-model="models/car2.glb" id="lightTarget" position="0 0 0" rotation="0 -45 0" scale="1 1 1"></a-entity>	
             </a-entity>
         </a-marker>
 
 <a-marker preset="custom" type="pattern" url="marker/marker0.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
 	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
-	            <a-entity gltf-model="models/fashion.glb" id="lightTarget" position="-1 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
-				<a-entity gltf-model="models/shoe.glb" id="lightTarget" position="1 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
+				<a-entity gltf-model="models/shoe.glb" id="lightTarget" position="0 0 0" rotation="0 90 0" scale="5 5 5"></a-entity>	
 
             </a-entity>
         </a-marker>
