@@ -170,13 +170,14 @@
 	   </a-marker>	
       
        <a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity id="houseandcar" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -35 0">
+            <a-entity id="houseandcar" visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -35 0" >
 	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>     
 
-            <a-entity id="wine" gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
-
+            <a-entity id="wine" visible="false" gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
+  <a-plane id="menu1" color="#CCC" height="20" width="100" position "-150 0 0"></a-plane>
+    <a-plane id="menu2" color="#CCC" height="20" width="100" position "150 0 0"></a-plane>
 
         </a-marker>
       
@@ -193,8 +194,7 @@
             </a-entity>
         </a-marker>
 
-        <a-plane id="menu1" scale="1 1 1" position="-2 0 0" rotation="-90 0 0">
-        <a-plane id="menu2" scale="1 1 1" position="2 0 0" rotation="-90 0 0">
+       
 
         /* GPS */
 
