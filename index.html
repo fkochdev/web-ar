@@ -133,7 +133,7 @@
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130603</p>
+      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130604</p>
     </div>
 
     <a-scene 
@@ -177,10 +177,11 @@
 
             <a-entity id="wine" visible="false" gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
 
-  <a-entity id = "menu1" position = "-2 0 0" geometry = "primitive: plane; height: 1; width: 1" material = "color:black" text="color: white; align: center; value: 1; width: 5; value: 'House + Car'" change-models></a-entity>
-    <a-entity id = "menu2" position = "2 0 0" geometry = "primitive: plane; height: 1; width: 1" material = "color:black" text="color: white; align: center; value: 1; width: 5; value: 'Wine'" change-models></a-entity>
+  <a-entity id = "menu1" look-at="[camera]" position = "-2 0 0" geometry = "primitive: plane; height: 1; width: 1" material = "color:black" text="color: white; align: center; value: 1; width: 5" change-models></a-entity>
+    <a-entity id = "menu2" look-at="[camera]" position = "2 0 0" geometry = "primitive: plane; height: 1; width: 1" material = "color:black" text="color: white; align: center; value: 1; width: 5" change-models></a-entity>
+
+          <a-entity id ="display" look-at="[camera]" position="0 2 -5" geometry="primitive: plane; height: 1; width: 3" material="color: teal" text="color: white; align: center; value: 1; width: 5"></a-entity>
         </a-marker>
-          <a-entity id ="display" position="0 2 -5" geometry="primitive: plane; height: 2; width: 5" material="color: teal" text="color: white; align: center; value: 1; width: 5; value: 'Hause + Car'"></a-entity>
       
         <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
 	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
@@ -242,19 +243,20 @@ window.addEventListener('click', function () {
     },
     onClick:function()
     {
-      if (modelHouseCar.visible)
+      if (this.modelHouseCar.visible)
       {
       	this.modelHouseCar.setAttribute('visible','false');
 		this.modelWine.setAttribute('visible','true'); 
+      this.display.setAttribute('text','value',"Wine");
+
       }
       else //if (document.getElementById("#houseandcar").visible)
       {
       	this.modelHouseCar.setAttribute('visible','true');
 		this.modelWine.setAttribute('visible','false'); 
-      }
+      this.display.setAttribute('text','value',"House + Car");
 
-      var textVal = this.el.components.text;
-      this.display.setAttribute("text","value",textVal);
+      }
     }
   });
 }
