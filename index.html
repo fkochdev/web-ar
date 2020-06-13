@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script>
+<!--script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script-->
 <script src="https://fcor.github.io/arjs-gestures/gesture-detector.js"></script>
 <script src="https://fcor.github.io/arjs-gestures/gesture-handler.js"></script>
 
@@ -112,6 +112,43 @@
         	this.style.display = 'none';
         })
       })
+
+
+	AFRAME.registerComponent('change-models', {
+    init: function () {
+     this.display = document.querySelector("#display");
+     		var textVar = "Set text here"; 
+		this.display.setAttribute('text','value',textVar);
+     this.el.addEventListener("click",this.onClick.bind(this));
+     this.modelHouseCar = document.querySelector("#houseandcar");
+     this.modelWine = document.querySelector("#wine");
+    },
+    onClick:function()
+    {
+    	var textDebug = "clicked"; 
+		this.display.setAttribute('text','value',textDebug);
+      if (this.modelHouseCar.visible)
+      {
+      	textDebug = "house visible";
+		this.display.setAttribute('text','value',textDebug);
+
+      	this.modelHouseCar.setAttribute('visible','false');
+		this.modelWine.setAttribute('visible','true');
+		textDebug = "Wine"; 
+		this.display.setAttribute('text','value',textVar);
+
+      }
+      else //if (document.getElementById("#houseandcar").visible)
+      {
+      	this.modelHouseCar.setAttribute('visible','true');
+		this.modelWine.setAttribute('visible','false'); 
+		textDebug = "HouseCar"; 
+		this.display.setAttribute('text','value',textVar);
+
+      }
+    }
+  });
+}
     </script>
 
   </head>
@@ -133,7 +170,7 @@
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130611</p>
+      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130612</p>
     </div>
 
     <a-scene 
@@ -148,7 +185,7 @@
 
     	<a-assets>
         	<video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
-		    <img id="location" src="images/location.jpg">
+		    <!--img id="location" src="images/location.jpg"-->
   		</a-assets>
 
   <!-- Using the asset management system. -->
@@ -164,7 +201,7 @@
 	   </a-marker-->	
 
 	 
-       <!--a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+       <a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
             <a-entity id="houseandcar" visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -35 0" >
 	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
@@ -178,11 +215,11 @@
 	          	<a-entity id ="display" position="0 2 0" geometry="primitive: plane; height: 1; width: 3" material="color: teal" text="color: white; align: center; value: 1; width: 5; value: 'modelname'"></a-entity>
 	      	</a-entity>
 
-        </a-marker-->
+        </a-marker>
 
  		<a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
-        <a-entity visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
-	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
+	        <a-entity visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
+		        <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>  
 
@@ -246,50 +283,5 @@
       <a-entity camera></a-entity>
       <!--a-camera gps-camera rotation-reader></a-camera-->
 
-
-    <!--script>
-window.addEventListener('click', function () {
-  var v = document.querySelector('#video
-});
-</script-->
-<script>
-
-
-	AFRAME.registerComponent('change-models', {
-    init: function () {
-     this.display = document.querySelector("#display");
-     		var textVar = "Set text here"; 
-		this.display.setAttribute('text','value',textVar);
-     this.el.addEventListener("click",this.onClick.bind(this));
-     this.modelHouseCar = document.querySelector("#houseandcar");
-     this.modelWine = document.querySelector("#wine");
-    },
-    onClick:function()
-    {
-    	var textDebug = "clicked"; 
-		this.display.setAttribute('text','value',textDebug);
-      if (this.modelHouseCar.visible)
-      {
-      	textDebug = "house visible";
-		this.display.setAttribute('text','value',textDebug);
-
-      	this.modelHouseCar.setAttribute('visible','false');
-		this.modelWine.setAttribute('visible','true');
-		textDebug = "Wine"; 
-		this.display.setAttribute('text','value',textVar);
-
-      }
-      else //if (document.getElementById("#houseandcar").visible)
-      {
-      	this.modelHouseCar.setAttribute('visible','true');
-		this.modelWine.setAttribute('visible','false'); 
-		textDebug = "HouseCar"; 
-		this.display.setAttribute('text','value',textVar);
-
-      }
-    }
-  });
-}
-</script>
   </body>
 </html>
