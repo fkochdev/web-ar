@@ -169,7 +169,7 @@
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130615</p>
+      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130614</p>
     </div>
 
     <a-scene 
@@ -223,34 +223,34 @@
  		<a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
 	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
 		        <a-entity gltf-model="#car" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
-	            <a-entity gltf-model="#house" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
+	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>  
 
 	   </a-marker>	
 
-          <a-marker preset="custom" id="videoMarker" type="pattern" url="marker/50/pattern-kola.patt">  
+          <a-marker preset="custom" id="videoMarker" type="pattern" url="marker/pattern-kola.patt">  
 	       <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler></a-video>
 	       	        <a-entity gltf-model="#car2" id="lightTarget" position="0 0 0" rotation="0 55 0" scale="1 1 1" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
 
 	   </a-marker>	
       
 
-        <a-marker preset="custom" type="pattern" url="marker/50/pattern-car.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+        <a-marker preset="custom" type="pattern" url="marker/pattern-car.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
 	        <a-entity gltf-model="#car2" id="lightTarget" position="0 0 0" rotation="0 55 0" scale="1 1 1" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
             </a-entity>
         </a-marker>
 
-        <a-marker preset="custom" type="pattern" url="marker/50/pattern-house.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+        <a-marker preset="custom" type="pattern" url="marker/pattern-house.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
             <a-entity gltf-model="#house" position="0 0 0" scale="0.003 0.003 0.003" visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -35 0" >
             </a-entity>     
          </a-marker>
 
-		<a-marker preset="custom" type="pattern" url="marker/50/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+		<a-marker preset="custom" type="pattern" url="marker/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
 	        <a-entity gltf-model="#shoe" id="lightTarget" position="0 0 0" rotation="0 90 0" scale="5 5 5" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
             </a-entity>
         </a-marker>
 
-		<!--a-marker preset="custom" type="pattern" url="marker/50/pattern-fashion.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+		<!--a-marker preset="custom" type="pattern" url="marker/pattern-fashion.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
 	        <a-entity gltf-model="#fashion" id="lightTarget" position="0 0 0" rotation="0 180 0" scale="1 1 1" animation="property: rotation; from: 0 0 0; to: 0 540 0; loop: true; easing: linear; dur: 20000" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10; rotationFactor: 0">
             </a-entity>
         </a-marker-->
@@ -283,6 +283,6 @@
 
       <a-entity camera></a-entity>
       <!--a-camera gps-camera rotation-reader></a-camera-->
-
+	</a-scene>
   </body>
 </html>
