@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<!--script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script-->
+<script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script>
 <script src="https://fcor.github.io/arjs-gestures/gesture-detector.js"></script>
 <script src="https://fcor.github.io/arjs-gestures/gesture-handler.js"></script>
 
@@ -133,7 +133,7 @@
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130601</p>
+      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130602</p>
     </div>
 
     <a-scene 
@@ -176,8 +176,8 @@
             </a-entity>     
 
             <a-entity id="wine" visible="false" gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
-  <a-plane id="menu1" color="#CCC" height="20" width="100" position "-150 0 0"></a-plane>
-    <a-plane id="menu2" color="#CCC" height="20" width="100" position "150 0 0"></a-plane>
+  <a-plane id="menu1"  look-at="[camera]" color="#CCC" height="2" width="10" position "-15 0 0"></a-plane>
+    <a-plane id="menu2" look-at="[camera]" color="#CCC" height="2" width="10" position "15 0 0"></a-plane>
 
         </a-marker>
       
