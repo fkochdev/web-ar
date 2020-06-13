@@ -114,7 +114,7 @@
       });
 
 
-	AFRAME.registerComponent('change-models', {
+	/*AFRAME.registerComponent('change-models', {
     init: function () {
      this.display = document.querySelector("#display");
      		var textVar = "Set text here"; 
@@ -147,7 +147,7 @@
 
       }
     }
-  });
+  });*/
     </script>
 
   </head>
@@ -169,7 +169,7 @@
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130613</p>
+      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020130614</p>
     </div>
 
     <a-scene 
@@ -187,9 +187,6 @@
 		    <!--img id="location" src="images/location.jpg"-->
   		</a-assets>
 
-  <!-- Using the asset management system. -->
-  <a-image src="#my-image"></a-image>
-        </a-assets>
 -
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
 		<a-entity light="type: ambient; color: #ffffe0; intensity: 1;"></a-entity>
@@ -200,7 +197,7 @@
 	   </a-marker-->	
 
 	 
-       <a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+       <!--a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
             <a-entity id="houseandcar" visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -35 0" >
 	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
@@ -214,10 +211,10 @@
 	          	<a-entity id ="display" position="0 2 0" geometry="primitive: plane; height: 1; width: 3" material="color: teal" text="color: white; align: center; value: 1; width: 5; value: 'modelname'"></a-entity>
 	      	</a-entity>
 
-        </a-marker>
+        </a-marker-->
 
  		<a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
-	        <a-entity visible="true" class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
+	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
 		        <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
 	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>  
