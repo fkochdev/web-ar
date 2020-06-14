@@ -1,32 +1,3 @@
-
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@fkochdev
-fkochdev /
-web-ar
-
-0
-0
-
-    1
-
-Code
-Issues 0
-Pull requests 0
-Actions
-Projects 0
-Wiki
-Security 0
-Insights
-
-    Settings
-
-web-ar/index.html
-@fkochdev fkochdev fix, add marker and models 8bcea1a 3 days ago
-231 lines (191 sloc) 7.95 KB
 <!DOCTYPE html>
 <html>
   <head>
@@ -192,7 +163,7 @@ web-ar/index.html
 	       <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
 	   </a-marker-->	
 
-	   <a-marker preset="custom" type="pattern" url="marker/marker_kolatest.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
+	   <a-marker preset="custom" type="pattern" url="marker/pattern-kola.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
 	       <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 10"></a-video>
 	       <a-entity gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
 
@@ -256,6 +227,3 @@ window.addEventListener('click', function () {
 
   </body>
 </html>
-
-
-
