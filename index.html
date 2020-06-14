@@ -18,16 +18,16 @@
 
     <style type="text/css">
 
-		p {
-		  font-family: Arial, Helvetica, sans-serif;
-		}
+    p {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-		a:link, 
-		a:visited,
-		a:hover,
-		a:active {
-		  color: white;
-		}
+    a:link, 
+    a:visited,
+    a:hover,
+    a:active {
+      color: white;
+    }
 
       #splash {
         display: flex;
@@ -84,7 +84,7 @@
       }
     </style>
     <script>
-		AFRAME.registerComponent('vidhandler', {
+    AFRAME.registerComponent('vidhandler', {
          init: function () {
           this.toggle = false;
           document.querySelector("#video").pause(); //reference to the video
@@ -106,10 +106,10 @@
         var scene = document.querySelector("a-scene");
         var vid = document.getElementById("video");
 
-		document.querySelector('#splash').style.display = 'flex';
+    document.querySelector('#splash').style.display = 'flex';
         document.querySelector('#splash').addEventListener('click', function () {
-	        vid.play();
-        	this.style.display = 'none';
+          vid.play();
+          this.style.display = 'none';
         })
       })
     </script>
@@ -119,21 +119,21 @@
 
 <div id="camhint">
       <div id="start-button">
-      	<p align="center">Please allow camera & gps access.</p>
-      	<p align="center">Bitte Kamera- und GPS-Zugriff erlauben.</p>
+        <p align="center">Please allow camera access.</p>
+        <p align="center">Bitte Kamera-Zugriff erlauben.</p>
 
       </div>
     </div>
 
  <div id="splash">
       <div id="start-button">
-      	<p align="center">Start WebAR</p>
+        <p align="center">Start WebAR</p>
 
       </div>
     </div>
 
      <div id="impressum">
-      	<p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a></p>
+        <p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a></p>
     </div>
 
     <a-scene 
@@ -146,79 +146,79 @@
     gesture-detector
     >
 
-    	<a-assets>
-        	<video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
-		    <img id="location" src="images/location.jpg">
-  		</a-assets>
+/* MARKER */
+      <a-assets>
+          <video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+        <img id="location" src="images/location.jpg">
+      </a-assets>
 
   <!-- Using the asset management system. -->
   <a-image src="#my-image"></a-image>
         </a-assets>
 
         <!--a-light color="white" position="-15 15 -15" distance="200" intensity="1"></a-light-->
-		<a-entity light="type: ambient; color: #ffffe0; intensity: 1;"></a-entity>
+    <a-entity light="type: ambient; color: #ffffe0; intensity: 1;"></a-entity>
        <a-light type="directional" color="white" target="#lightTarget" position="1 1 1" intensity="1.4"></a-light>
 
        <!--a-marker preset="custom" type="pattern" url="marker/marker0.patt">  
-	       <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
-	   </a-marker-->	
+         <a-entity gltf-model="models/elephant.glb" position="0 0 0" scale="1 1 1"></a-entity>     
+     </a-marker-->  
 
-	   <a-marker preset="custom" type="pattern" url="marker/pattern-kola.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
-	       <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 10"></a-video>
-	       <a-entity gltf-model="models/wineglass.glb" id="lightTarget" rotation="180 0 0" position="2 0 0" scale="0.7 0.7 0.7" class="clickable" gesture-handler="minScale: 0.1; maxScale: 10"></a-entity>	
+     <a-marker preset="custom" type="pattern" url="marker/pattern-kola.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
+         <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 10"></a-video>
 
-	   </a-marker>	
+     </a-marker>  
       
-       <a-marker preset="custom" type="pattern" url="marker/pattern-car.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">
-	            <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>	
-	            <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
+       <a-marker preset="custom" type="pattern" url="marker/marker1.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10" rotation="0 -135 0">
+              <a-entity gltf-model="models/car.glb" id="lightTarget" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>  
+              <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>     
 
         </a-marker>
       
         <a-marker preset="custom" type="pattern" url="marker/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
-	            <a-entity gltf-model="models/car2.glb" id="lightTarget" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
+          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
+              <a-entity gltf-model="models/car2.glb" id="lightTarget" position="0 0 0" rotation="0 -45 0" scale="1 1 1"></a-entity> 
             </a-entity>
         </a-marker>
 
-<a-marker preset="custom" type="pattern" url="marker/pattern-house.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-	        <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
-	            <a-entity gltf-model="models/fashion.glb" id="lightTarget" position="-1 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
-				<a-entity gltf-model="models/shoe.glb" id="lightTarget" position="1 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>	
+<a-marker preset="custom" type="pattern" url="marker/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 10">  <!--animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 20000"-->
+        <a-entity gltf-model="models/shoe.glb" id="lightTarget" position="0 0 0" rotation="0 90 0" scale="5 5 5"></a-entity>  
 
             </a-entity>
         </a-marker>
 
+        /* GPS */
 
-		<!--a-text
-	        value="China-\nRestaurant" 
-	        look-at="[gps-camera]"
-	        scale="50 50 50"
-	        gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;"
-      	></a-text>
-      	  <a-image src="#location"
-      	  	look-at="[gps-camera]"
-	        scale="1 1 1"
-	        gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;">
-      	  </a-image>
-      	<a-text
-	        value="Café Bistro Nes"
-	        look-at="[gps-camera]"
-	        scale="1 1 1"
-	        gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;"
-      	></a-text>
-      	  <a-image src="#location"
-      	  	look-at="[gps-camera]"
-	        scale="1 1 1"
-	        gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;">
-      	  </a-image-->
+    <!--a-text
+          value="China-\nRestaurant" 
+          look-at="[gps-camera]"
+          scale="50 50 50"
+          gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;"
+        ></a-text>
+          <a-image src="#location"
+            look-at="[gps-camera]"
+          scale="1 1 1"
+          gps-entity-place="latitude: 53.4870566; longitude: 10.1453014;">
+          </a-image>
+        <a-text
+          value="Café Bistro Nes"
+          look-at="[gps-camera]"
+          scale="1 1 1"
+          gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;"
+        ></a-text>
+          <a-image src="#location"
+            look-at="[gps-camera]"
+          scale="1 1 1"
+          gps-entity-place="latitude: 53.4923279; longitude: 10.1243976;">
+          </a-image-->
 
       <a-entity camera></a-entity>
       <!--a-camera gps-camera rotation-reader></a-camera-->
-
 </a-scene>
+
     <!--script>
 window.addEventListener('click', function () {
   var v = document.querySelector('#video
