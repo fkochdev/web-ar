@@ -133,7 +133,7 @@
     </div>
 
      <div id="impressum">
-        <p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020061401</p>
+        <p align="center">(c) 2020, Florian Koch / <a href="mailto:fkoch.dev@gmail.com" color="black">info (a) designed-dreams.de</a> v.2020061402<br><b><a href="https://fkochdev.github.io/marker/AR_Marker_Print.pdf">Marker-Download</a></b></p>
     </div>
 
     <a-scene 
@@ -160,12 +160,12 @@
 
 
      <a-marker preset="custom" type="pattern" url="marker/90/pattern_kola.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
-         <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 7; rotationFactor: 0;"></a-video>
+         <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 4; rotationFactor: 0;"></a-video>
 
      </a-marker>  
       
        <a-marker preset="custom" type="pattern" url="marker/90/pattern-house.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 7" rotation="0 -135 0">
+            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 4" rotation="0 -135 0">
               <a-entity gltf-model="models/car.glb" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity>  
               <a-entity gltf-model="models/House.gltf" position="0 0 0" scale="0.003 0.003 0.003"></a-entity>
             </a-entity>     
@@ -173,26 +173,26 @@
         </a-marker>
       
         <a-marker preset="custom" type="pattern" url="marker/90/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 7"> 
+          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 4"> 
               <a-entity gltf-model="models/elephant.glb" position="0 0 0" rotation="0 -45 0" scale="1.5 1.5 1.5"></a-entity> 
             </a-entity>
         </a-marker>
 
         <a-marker preset="custom" type="pattern" url="marker/90/pattern-car.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 7"> 
+          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 4"> 
               <a-entity gltf-model="models/car2.glb" position="0 0 0" rotation="0 -45 0" scale="0.7 0.7 0.7"></a-entity> 
             </a-entity>
         </a-marker>
 
 <a-marker preset="custom" type="pattern" url="marker/90/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 7">  
+          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 4">  
         <a-entity gltf-model="models/shoe.glb" position="0 0 0" rotation="0 90 0" scale="7 7 7"></a-entity>  
             </a-entity>
         </a-marker>
 
 
 <a-marker preset="custom" type="pattern" url="marker/90/pattern-fashion.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 7; rotationFactor: 0;" animation="property: rotation; from: 0 90 0; to: 0 470 0; loop: true; easing: linear; dur: 20000">
+          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 4; rotationFactor: 0;" animation="property: rotation; from: 0 90 0; to: 0 470 0; loop: true; easing: linear; dur: 20000">
         <a-entity gltf-model="models/fashion.glb" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>  
             </a-entity>
         </a-marker>
