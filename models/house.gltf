@@ -71,14 +71,18 @@
         {
             "doubleSided" : true,
             "emissiveFactor" : [
-                0,
-                0,
-                0
+                1,
+                1,
+                1
             ],
+            "emissiveTexture" : {
+                "index" : 0,
+                "texCoord" : 0
+            },
             "name" : "lambert2",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 0,
+                    "index" : 1,
                     "texCoord" : 0
                 },
                 "metallicFactor" : 0,
@@ -99,7 +103,7 @@
                     0.43529415130615234,
                     0.5607843399047852,
                     0.7450980544090271,
-                    0.05000000074505806
+                    0.15490613877773285
                 ],
                 "metallicFactor" : 0,
                 "roughnessFactor" : 0
@@ -108,14 +112,14 @@
         {
             "doubleSided" : true,
             "emissiveFactor" : [
-                0,
-                0,
-                0
+                0.5517436861991882,
+                0.5517436861991882,
+                0.5517436861991882
             ],
             "name" : "Material #1051",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
-                    "index" : 1,
+                    "index" : 2,
                     "texCoord" : 0
                 },
                 "metallicFactor" : 0,
@@ -170,6 +174,9 @@
         }
     ],
     "textures" : [
+        {
+            "source" : 0
+        },
         {
             "source" : 0
         },
