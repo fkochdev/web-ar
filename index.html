@@ -2,15 +2,13 @@
 <html>
   <head>
     <title>WebAR Marker</title>
-    <meta name="WebAR Marker Samples" content="WebAR Sample">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta name="WebAR Marker-Based" content="WebAR Marker-Based">
+    <link id="favicon" rel="icon" href="https://arvreal.de/wp-content/uploads/2020/06/arvreal.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
     <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<!--script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script-->
 <script src="https://fcor.github.io/arjs-gestures/gesture-detector.js"></script>
 <script src="https://fcor.github.io/arjs-gestures/gesture-handler.js"></script>
 
@@ -83,26 +81,36 @@
         font-size: 1.5vw;
       }
     </style>
-    <script>
-    AFRAME.registerComponent('vidhandler', {
-         init: function () {
-          this.toggle = false;
-          document.querySelector("#video").pause(); //reference to the video
-         },
-         tick:function(){  
-         if(document.querySelector("a-marker").object3D.visible == true){
-           if(!this.toggle){
-             this.toggle = true;
-             document.querySelector("#video").play();
-           }
-         }else{
-           this.toggle = false;
-           document.querySelector("#video").pause();
-         }
-         }
-         });
 
-      document.addEventListener("DOMContentLoaded", function(event) {
+    <!-- vidhandler component -->
+<script>
+AFRAME.registerComponent('vidhandler', {
+schema: {
+  target: {type: 'string'}
+},
+init: function() {
+    this.videoNodes = document.querySelectorAll(this.data.target)
+},
+tick: function() {
+    if (this.el.object3D.visible == true) {
+        if (!this.toggle) {
+            this.toggle = true;
+            for (let i = 0; i < this.videoNodes.length; i++) {
+                this.videoNodes[i].play();
+            } 
+        }
+    } else {
+        if (this.toggle) {
+          for (let i = 0; i < this.videoNodes.length; i++) {
+            this.videoNodes[i].pause();
+          }
+          this.toggle = false;
+        }
+    }
+}
+});
+
+document.addEventListener("DOMContentLoaded", function(event) {
         var scene = document.querySelector("a-scene");
         var vid = document.getElementById("video");
 
@@ -112,7 +120,7 @@
           this.style.display = 'none';
         })
       });
-    </script>
+</script>
 
   </head>
   <body>
@@ -132,9 +140,9 @@
       </div>
     </div>
 
-     <!--div id="impressum">
+     <div id="impressum">
         <p align="center">(c) 2020, Florian Koch / <a href="mailto:info@arvreal.de" color="black">info (a) arvreal.de</a> / <b><a href="https://fkochdev.github.io/web-ar/marker/AR_Marker_Print.pdf">Marker-Download</a></b></p>
-    </div-->
+    </div>
 
     <a-scene 
     vr-mode-ui="enabled: false;"
@@ -160,6 +168,12 @@
          <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 2; rotationFactor: 0;"></a-video>
 
      </a-marker>  
+
+     <a-marker preset="custom" type="pattern" url="marker/90/pattern-self.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
+              <a-entity gltf-model="models/self.glb" position="0 0 0" rotation="0 90 0" scale="7 7 7"></a-entity>  
+            </a-entity>     
+        </a-marker>
       
        <a-marker preset="custom" type="pattern" url="marker/90/pattern-house.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
             <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2; rotationFactor: 0;" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 10000">
@@ -177,7 +191,7 @@
 
         </a-marker>
       
-  <a-marker preset="custom" type="pattern" url="marker/90/pattern-scan-marker2.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+        <a-marker preset="custom" type="pattern" url="marker/90/pattern-scan-marker2.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
             <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
               <a-entity gltf-model="models/elephant.glb" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>  
             </a-entity>     
@@ -197,14 +211,14 @@
             </a-entity>
         </a-marker>
 
-<a-marker preset="custom" type="pattern" url="marker/90/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+        <a-marker preset="custom" type="pattern" url="marker/90/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
           <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">  
         <a-entity gltf-model="models/shoe.glb" position="0 0 0" rotation="0 90 0" scale="7 7 7"></a-entity>  
             </a-entity>
         </a-marker>
 
 
-<a-marker preset="custom" type="pattern" url="marker/90/pattern-fashion.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+        <a-marker preset="custom" type="pattern" url="marker/90/pattern-fashion.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
           <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
         <a-entity gltf-model="models/fashion.glb" position="0 0 0" rotation="0 0 0" scale="1 1 1"></a-entity>  
             </a-entity>
