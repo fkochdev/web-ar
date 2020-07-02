@@ -1,231 +1,179 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>WebAR Marker</title>
-    <meta name="WebAR Marker-Based" content="WebAR Marker-Based">
-    <link id="favicon" rel="icon" href="https://arvreal.de/wp-content/uploads/2020/06/arvreal.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<script src="https://fcor.github.io/arjs-gestures/gesture-detector.js"></script>
-<script src="https://fcor.github.io/arjs-gestures/gesture-handler.js"></script>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>WebAR Marker</title>
+      <meta name="WebAR Marker-Based" content="WebAR Marker-Based">
+      <link id="favicon" rel="icon" href="https://arvreal.de/wp-content/uploads/2020/06/arvreal.ico" type="image/x-icon">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      
+      <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+      <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+      <script src="https://fcor.github.io/arjs-gestures/gesture-detector.js"></script>
+      <script src="https://fcor.github.io/arjs-gestures/gesture-handler.js"></script>
 
+      <style type="text/css">
 
-
-    <style type="text/css">
-
-    p {
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    a:link, 
-    a:visited,
-    a:hover,
-    a:active {
-      color: white;
-    }
-
-      #splash {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        align-items: center;
-        justify-content: center;
-        
-        background: rgba(0, 0, 0, 1);
-        color: white;
-        cursor: pointer;
-        z-index: 999;
-        font-size: 6vw;
-      }
-
-      #camhint {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        align-items: center;
-        justify-content: center;
-        
-        background: rgba(0, 0, 0, 1);
-        color: white;
-        cursor: pointer;
-        z-index: -2;
-        font-size: 2vw;
-      }
-
-      #impressum {
-        display: flex;
-        position: fixed;
-        top: 90%;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        align-items: center;
-        justify-content: center;
-        
-        background: rgba(0, 0, 0, 1);
-        color: white;
-        cursor: pointer;
-        z-index: 999;
-        font-size: 1.5vw;
-      }
-    </style>
-
-    <!-- vidhandler component -->
-<script>
-AFRAME.registerComponent('vidhandler', {
-schema: {
-  target: {type: 'string'}
-},
-init: function() {
-    this.videoNodes = document.querySelectorAll(this.data.target)
-},
-tick: function() {
-    if (this.el.object3D.visible == true) {
-        if (!this.toggle) {
-            this.toggle = true;
-            for (let i = 0; i < this.videoNodes.length; i++) {
-                this.videoNodes[i].play();
-            } 
+        p {
+          font-family: Arial, Helvetica, sans-serif;
         }
-    } else {
-        if (this.toggle) {
-          for (let i = 0; i < this.videoNodes.length; i++) {
-            this.videoNodes[i].pause();
+
+        a:link, 
+        a:visited,
+        a:hover,
+        a:active {
+          color: white;
+        }
+
+        #splash {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          align-items: center;
+          justify-content: center;
+          
+          background: rgba(0, 0, 0, 1);
+          color: white;
+          cursor: pointer;
+          z-index: 999;
+          font-size: 6vw;
+        }
+
+        #camhint {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          align-items: center;
+          justify-content: center;
+          
+          background: rgba(0, 0, 0, 1);
+          color: white;
+          cursor: pointer;
+          z-index: -2;
+          font-size: 2vw;
+        }
+
+        #impressum {
+          display: flex;
+          position: fixed;
+          top: 90%;
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          align-items: center;
+          justify-content: center;
+          
+          background: rgba(0, 0, 0, 1);
+          color: white;
+          cursor: pointer;
+          z-index: 999;
+          font-size: 1.5vw;
+        }
+      </style>
+
+      <!-- vidhandler component -->
+  <script>
+  AFRAME.registerComponent('vidhandler', {
+  schema: {
+    target: {type: 'string'}
+  },
+  init: function() {
+      this.videoNodes = document.querySelectorAll(this.data.target)
+  },
+  tick: function() {
+      if (this.el.object3D.visible == true) {
+          if (!this.toggle) {
+              this.toggle = true;
+              for (let i = 0; i < this.videoNodes.length; i++) {
+                  this.videoNodes[i].play();
+              } 
           }
-          this.toggle = false;
-        }
-    }
-}
-});
+      } else {
+          if (this.toggle) {
+            for (let i = 0; i < this.videoNodes.length; i++) {
+              this.videoNodes[i].pause();
+            }
+            this.toggle = false;
+          }
+      }
+  }
+  });
 
-document.addEventListener("DOMContentLoaded", function(event) {
-        var scene = document.querySelector("a-scene");
-        var vid = document.getElementById("video");
+  document.addEventListener("DOMContentLoaded", function(event) {
+          var scene = document.querySelector("a-scene");
+          var vid = document.getElementById("video");
 
-    document.querySelector('#splash').style.display = 'flex';
-        document.querySelector('#splash').addEventListener('click', function () {
-          vid.play();
-          this.style.display = 'none';
-        })
-      });
-</script>
+      document.querySelector('#splash').style.display = 'flex';
+          document.querySelector('#splash').addEventListener('click', function () {
+            vid.play();
+            this.style.display = 'none';
+          })
+        });
+  </script>
 
-  </head>
-  <body>
 
-<div id="camhint">
-      <div>
-        <p align="center">Please allow camera access.</p>
-        <p align="center">Bitte Kamera-Zugriff erlauben.</p>
 
+    </head>
+    <body>
+
+      <div id="camhint">
+        <div>
+          <p align="center">Please allow camera access.</p>
+          <p align="center">Bitte Kamera-Zugriff erlauben.</p>
+        </div>
       </div>
-    </div>
 
- <div id="splash">
-      <div id="start-button">
-        <p align="center">Start WebAR</p>
-
+      <div id="splash">
+        <div id="start-button">
+          <p align="center">Start WebAR</p>
+        </div>
       </div>
-    </div>
 
-     <div id="impressum">
-        <p align="center">(c) 2020, Florian Koch / <a href="mailto:info@arvreal.de" color="black">info (a) arvreal.de</a> / <b><a href="https://fkochdev.github.io/web-ar/marker/AR_Marker_Print.pdf">Marker-Download</a></b></p>
-    </div>
+      <div id="impressum">
+          <p align="center">(c) 2020, Florian Koch / <a href="mailto:info@arvreal.de" color="black">info (a) arvreal.de</a></p>
+      </div>
 
-    <a-scene 
-    vr-mode-ui="enabled: false;"
-    device-orientation-permission-ui="enabled: false;"
-    renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; patternRatio: 0.9;"
-    light="defaultLightsEnabled: false;"
-    gesture-detector
-    >
+      <a-scene 
+      vr-mode-ui="enabled: false;"
+      device-orientation-permission-ui="enabled: false;"
+      renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; patternRatio: 0.9;"
+      light="defaultLightsEnabled: false;"
+      gesture-detector
+      >
 
-     <a-assets>
-          <video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
-      </a-assets>
+          <a-assets>
+              <video webkit-playsinline playsinline crossorigin="anonymous" type="video/mp4" id="video" loop="true" src="models/video.mp4"></video>
+          </a-assets>
 
+          <a-entity light="type: hemisphere; color: #ffffe0; groundColor: #e0e0ff; intensity: 1"></a-entity>
+          <a-marker vidhandler="target: #video" preset="custom" type="pattern" url="marker/90/pattern-arvreal.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+              <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
+                <a-entity gltf-model="models/shoe.glb" position="0 0 0" rotation="0 90 0" scale="7 7 7"></a-entity>  
+              </a-entity>     
+              <a-video src="#video" width="2.56" height="1.44" position="0 0 -2" rotation="-90 0 0" class="clickable" gesture-handler="minScale: 0.25; maxScale: 2; rotationFactor: 0;"></a-video>
+          </a-marker>
+          
+          <a-marker preset="custom" type="pattern" url="marker/90/pattern-scan-marker.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+              <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
+                <a-entity gltf-model="models/house.glb" position="0 0 0" rotation="0 90 0" scale="0.1 0.1 0.1"></a-entity>  
+              </a-entity>     
+          </a-marker>
 
-        <a-entity light="type: hemisphere; color: #ffffe0; groundColor: #e0e0ff; intensity: 1"></a-entity>
-    <!--a-entity light="type: ambient; color: #ffffe0; intensity: 1;"></a-entity-->
-       <a-light type="directional" color="white" position="1 1 1" intensity="1.4"></a-light>
+          <a-entity camera></a-entity>
 
+      </a-scene>
 
-     <a-marker preset="custom" type="pattern" url="marker/90/pattern_kola.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">  
-         <a-video src="#video" width="2.56" height="1.44" position="0 0 0" rotation="-90 0 0" vidhandler class="clickable" gesture-handler="minScale: 0.25; maxScale: 2; rotationFactor: 0;"></a-video>
-
-     </a-marker>  
-
-     <a-marker preset="custom" type="pattern" url="marker/90/pattern-self.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
-              <a-entity gltf-model="models/self.glb" position="0 0 0" rotation="0 90 0" scale="7 7 7"></a-entity>  
-            </a-entity>     
-        </a-marker>
-      
-       <a-marker preset="custom" type="pattern" url="marker/90/pattern-house.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2; rotationFactor: 0;" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; easing: linear; dur: 10000">
-              <!--a-entity gltf-model="models/car.glb" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity-->  
-              <a-entity gltf-model="models/house.gltf" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
-            </a-entity>     
-
-        </a-marker>
-
-        <a-marker preset="custom" type="pattern" url="marker/90/pattern-scan-marker.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
-              <!--a-entity gltf-model="models/car.glb" position="-0.45 0.05 -2.2" rotation="0 90 0" scale="0.25 0.25 0.25"></a-entity-->  
-              <a-entity gltf-model="models/house.gltf" position="0 0 0" scale="0.1 0.1 0.1"></a-entity>
-            </a-entity>     
-
-        </a-marker>
-      
-        <a-marker preset="custom" type="pattern" url="marker/90/pattern-scan-marker2.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-            <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
-              <a-entity gltf-model="models/elephant.glb" position="0 0 0" rotation="0 90 0" scale="1 1 1"></a-entity>  
-            </a-entity>     
-
-        </a-marker>
-      
-
-        <a-marker preset="custom" type="pattern" url="marker/90/marker_fk.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2"> 
-              <a-entity gltf-model="models/elephant.glb" position="0 0 0" rotation="0 0 0" scale="1.5 1.5 1.5"></a-entity> 
-            </a-entity>
-        </a-marker>
-
-        <a-marker preset="custom" type="pattern" url="marker/90/pattern-car.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2"> 
-              <a-entity gltf-model="models/car2.glb" position="0 0 0" rotation="0 0 0" scale="0.7 0.7 0.7"></a-entity> 
-            </a-entity>
-        </a-marker>
-
-        <a-marker preset="custom" type="pattern" url="marker/90/pattern-shoe.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">  
-        <a-entity gltf-model="models/shoe.glb" position="0 0 0" rotation="0 90 0" scale="7 7 7"></a-entity>  
-            </a-entity>
-        </a-marker>
-
-
-        <a-marker preset="custom" type="pattern" url="marker/90/pattern-fashion.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-          <a-entity class="clickable" gesture-handler="minScale: 0.25; maxScale: 2">
-        <a-entity gltf-model="models/fashion.glb" position="0 0 0" rotation="0 0 0" scale="1 1 1"></a-entity>  
-            </a-entity>
-        </a-marker>
-
-      <a-entity camera></a-entity>
-</a-scene>
-
-  </body>
-</html>
+    </body>
+  </html>
